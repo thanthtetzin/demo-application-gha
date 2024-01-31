@@ -6,43 +6,45 @@ import {
   FwbButton,
   FwbCheckbox,
 } from "flowbite-vue";
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 
-interface Task {
-  title: string;
-  isDone: boolean;
-}
+import {
+  getTodos,
+  addTodo,
+  deleteTodo,
+  updateTodo,
+  type Task,
+} from "../services/todo";
 
 const todos = ref<Task[]>([]);
 const text = ref("");
 
-function addTodo() {
+async function submit() {
   if (text.value.trim() === "") {
     return;
   }
 
-  todos.value.unshift({
-    title: text.value,
-    isDone: false,
-  });
+  todos.value.unshift(
+    await addTodo({
+      title: text.value,
+      isDone: false,
+    })
+  );
 
   text.value = "";
 }
 
-function deleteTodo(todo: Task) {
+async function remove(todo: Task) {
   todos.value = todos.value.filter((x) => x !== todo);
+  await deleteTodo(todo);
 }
 
-watch(
-  todos,
-  (newTodoValue) => {
-    localStorage.setItem("todos", JSON.stringify(newTodoValue));
-  },
-  { deep: true }
-);
+async function update(todo: Task) {
+  updateTodo(todo);
+}
 
 onMounted(() => {
-  todos.value = JSON.parse(localStorage.getItem("todos")) || [];
+  getTodos().then((response) => (todos.value = response));
 });
 </script>
 <template>
@@ -50,7 +52,7 @@ onMounted(() => {
     <FwbHeading class="mb-8">My Todos</FwbHeading>
 
     <div class="mb-8">
-      <form @submit.prevent="addTodo">
+      <form @submit.prevent="submit">
         <FwbInput
           type="text"
           placeholder="e.g. email your boss"
@@ -74,10 +76,10 @@ onMounted(() => {
         :class="`todo-item ${task.isDone && 'done'}`"
         class="flex gap-2"
       >
-        <FwbCheckbox v-model="task.isDone" />
+        <FwbCheckbox v-model="task.isDone" @change="update(task)" />
         <FwbInput class="grow" type="text" v-model="task.title">
           <template #suffix>
-            <button class="delete" @click="deleteTodo(task)">Delete</button>
+            <button class="delete" @click="remove(task)">Delete</button>
           </template>
         </FwbInput>
       </div>
