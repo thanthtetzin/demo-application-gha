@@ -4,12 +4,19 @@ export interface Task {
   id?: string;
   title: string;
   isDone: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const path = "http://localhost:4000/todo";
 
 export const getTodos = async (): Promise<Task[]> => {
   const response = await axios.get<Task[]>(path);
+  return response.data;
+};
+
+export const getCompleted = async (): Promise<Task[]> => {
+  const response = await axios.get<Task[]>(`${path}/completed`);
   return response.data;
 };
 

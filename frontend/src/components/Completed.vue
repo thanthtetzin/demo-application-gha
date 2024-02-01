@@ -1,24 +1,13 @@
 <script setup lang="ts">
 import { FwbCard, FwbHeading, FwbCheckbox } from "flowbite-vue";
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted } from "vue";
 
-interface Task {
-  title: string;
-  isDone: boolean;
-}
+import { getCompleted, type Task } from "../services/todo";
 
 const todos = ref<Task[]>([]);
 
-watch(
-  todos,
-  (newTodoValue) => {
-    localStorage.setItem("todos", JSON.stringify(newTodoValue));
-  },
-  { deep: true }
-);
-
-onMounted(() => {
-  todos.value = JSON.parse(localStorage.getItem("todos")) || [];
+onMounted(async () => {
+  todos.value = await getCompleted();
 });
 </script>
 <template>
@@ -32,7 +21,17 @@ onMounted(() => {
         class="flex gap-2"
       >
         <FwbCheckbox v-model="task.isDone" disabled />
-        {{ task.title }}
+        <div>
+          {{ task.title }}
+        </div>
+        <p>
+          <b>Completed:</b>
+          {{
+            new Intl.DateTimeFormat("default", { dateStyle: "short" }).format(
+              new Date(task.updatedAt!)
+            )
+          }}
+        </p>
       </div>
     </div>
   </fwb-card>
