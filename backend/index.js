@@ -67,7 +67,10 @@ app.delete("/todo/:id", (req, res) => {
 
 sequelize
   .authenticate()
-  .catch(() => console.error("There was an error connecting to db"))
+  .catch((error) => {
+    console.error("There was an error connecting to db");
+    throw error;
+  })
   .then(() =>
     app.listen(4000, () => {
       console.log("Ready to get todos!");
