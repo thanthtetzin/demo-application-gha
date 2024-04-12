@@ -1,5 +1,14 @@
+version: "3.7"
 services:
-  postgres:
+  migration:
+    depends_on:
+      - db
+    build: ./database
+    environment:
+      DATABASE_URL: "postgres://postgres:rn6yBZ1QG7x1asvBRzaX@db:5432/demo"
+    links:
+      - db
+  db:
     image: postgres
     restart: always
     environment:
