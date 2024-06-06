@@ -20,8 +20,15 @@ import {
     </template>
     <template #default="{ isShowMenu }">
       <fwb-navbar-collapse :is-show-menu="isShowMenu">
-        <fwb-navbar-link is-active link="/"> All Todos </fwb-navbar-link>
-        <fwb-navbar-link link="/completed"> Completed </fwb-navbar-link>
+        <fwb-navbar-link
+          is-active
+          link="/"
+        >
+          All Todos
+        </fwb-navbar-link>
+        <fwb-navbar-link link="/completed">
+          Completed
+        </fwb-navbar-link>
       </fwb-navbar-collapse>
     </template>
   </fwb-navbar>
