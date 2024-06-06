@@ -1,4 +1,5 @@
-import core from '@actions/core';
+// eslint-disable-next-line no-undef
+const core = require('@actions/core');
 // import github from '@actions/github';
 // import exec from '@actions/exec';
 function run() {
