@@ -1,7 +1,7 @@
-// eslint-disable-next-line no-undef
+/* eslint-disable no-undef */
 const core = require('@actions/core');
+const exec = require('@actions/exec');
 // import github from '@actions/github';
-import exec from '@actions/exec';
 function run() {
 	// 1 - Get the inputs
 	const bucket = core.getInput('bucket', { required: true });
