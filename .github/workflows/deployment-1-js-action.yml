@@ -1,4 +1,4 @@
-name: Deployment-With-Composite-Action
+name: Deployment-With-JS-Action
 on:
   push:
     branches:
