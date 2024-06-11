@@ -89,5 +89,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
           bucket: gha-tr-firat-custom-action-hosting
-          bucket-region: eu-central-1
+          bucket-region: eu-north-1
           dist-folder: ./dist
