@@ -1,4 +1,4 @@
-name: 'Deploy to AWS S3 with JS Action'
+name: 'Deploy to AWS S3 with Docker'
 description: 'Deploy a static website via AWS S3'
 inputs:
   bucket:
@@ -11,6 +11,9 @@ inputs:
   dist-folder:
     description: 'The folder contains the deployable files'
     required: true
+outputs:
+  website-url:
+    description: 'The URL of the deployed website'
 runs:
-  using: 'node16'
-  main: 'main.js'
+  using: 'docker'
+  image: 'Dockerfile'
