@@ -8,6 +8,16 @@
 - brew tap hashicorp/tap
 - brew install hashicorp/tap/terraform
 
+- cd infrastructure
+
+- Set AWS environment variables from AWS Playground Access Keys by running below commands
+
+```sh
+export AWS_ACCESS_KEY_ID="key1"
+export AWS_SECRET_ACCESS_KEY="key2"
+export AWS_SESSION_TOKEN="key3"
+```
+
 - open main.tf and replace your_name with your actual name
 - copy paste aws playgroud access keys in terminal
 - run `terraform init`
