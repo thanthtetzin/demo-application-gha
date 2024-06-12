@@ -2,6 +2,12 @@
 
 ## 1. Deploying S3 bucket and static site hosting
 
+- Terraform cli installed via Homebrew https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli#install-terraform
+- If you install deprecated one from homebrew, here are the steps to install latests one
+- brew uninstall terraform
+- brew tap hashicorp/tap
+- brew install hashicorp/tap/terraform
+
 - open main.tf and replace your_name with your actual name
 - copy paste aws playgroud access keys in terminal
 - run `terraform init`
