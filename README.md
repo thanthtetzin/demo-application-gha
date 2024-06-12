@@ -15,7 +15,13 @@
 
 ## 2. Destroy all the resources we deployed
 
-run `terraform destroy -auto-approve`
+- run `terraform destroy -auto-approve`
+
+## 3. Add Secrets to your Forked Github Repository
+
+- go to your forked repository > Settings > Security > Secrets and Variables > Actions
+- add `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_SESSION_TOKEN` with the values from AWS Playground
+- you can find those values by clicking Access Keys under the [AWS Playground - SRE 1](https://traderepublic.awsapps.com/start/#/?tab=accounts)
 
 ## Recommended IDE Setup
 
