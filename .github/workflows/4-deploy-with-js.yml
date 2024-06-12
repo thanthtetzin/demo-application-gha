@@ -91,5 +91,5 @@ jobs:
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         with:
           bucket: gha-tr-firat-custom-action-hosting
-          bucket-region: eu-north-1
+          bucket-region: eu-central-1
           dist-folder: ./dist
