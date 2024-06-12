@@ -91,7 +91,6 @@ jobs:
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         with:
           bucket: gha-firattale-custom-action-hosting
-          bucket-region: eu-central-1
           dist-folder: ./dist
       - name: Output information
         run: |
