@@ -7,7 +7,7 @@ import { FwbNavbar, FwbNavbarLogo, FwbNavbarLink, FwbNavbarCollapse } from 'flow
 	<fwb-navbar>
 		<template #logo>
 			<fwb-navbar-logo image-url="https://static-00.iconduck.com/assets.00/todo-icon-2048x2048-pij2pwiy.png" link="/">
-				My Awesome Demo
+				My Awesome Demo-TF-1
 			</fwb-navbar-logo>
 		</template>
 		<template #default="{ isShowMenu }">
