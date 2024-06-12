@@ -90,7 +90,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         with:
-          bucket: gha-tr-firattale-custom-action-hosting
+          bucket: gha-firattale-custom-action-hosting
           bucket-region: eu-north-1
           dist-folder: ./dist
       - name: Output information
